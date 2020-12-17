@@ -21,7 +21,7 @@
 <h3>github test123</h3>
 <h3>2020.12.17</h3>
 <h3>브랜치 테스트</h3>
-<h3>브랜치 테스트 master</h3>
+<h3>브랜치 테스트 123</h3>
 <br>
 
 <div class="nav pull-right">
