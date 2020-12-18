@@ -7,85 +7,63 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-    <script
-        src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
+    <link href="/application/views/css/join.css" rel="stylesheet">
 </head>
-<body>
-<h1>회원가입 페이지</h1>
-<h5>* 표시는 반드시 입력해야 하는 항목입니다.</h5>
-<br><br><br>
+<body style="background-color: gainsboro">
+<div class="registration-form">
+    <h2 style="margin-left: 46.5%; margin-bottom: 1%" >회원가입</h2>
 
-<form class="col-sm-12 form-horizontal" action="/project/join" name="join_form" method="post">
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* ID</label>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" id="id" name="id" placeholder="Id" onkeyup="id_check(this.value)">
+    <form class="col-sm-12 form-horizontal" action="/project/join" name="join_form" method="post">
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
         </div>
-        <span id="id_msg">5글자 이상 영문 또는 숫자를 입력해주세요.</span>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* Password</label>
-        <div class="col-sm-2">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password" onkeyup="password_check(this.value)">
+        <div class="form-group">
+            <input type="text" class="form-control item" id="id" name="id" placeholder="ID" onkeyup="id_check(this.value)">
+            <span id="id_msg">5글자 이상 영문 또는 숫자를 입력해주세요.</span>
         </div>
-        <span id="pw_msg">8자 이상, 영문, 숫자, 특수문자를 모두 하나 이상 사용하세요.</span>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* Password 확인</label>
-        <div class="col-sm-2">
-            <input type="password" class="form-control" id="password2" name="password2" placeholder="Password 확인" onkeyup="password2_check()">
+        <div class="form-group">
+            <input type="password" class="form-control item" id="password" name="password" placeholder="Password" onkeyup="password_check(this.value)">
+            <span id="pw_msg">8자 이상, 영문, 숫자, 특수문자를 모두 하나 이상 사용하세요.</span>
         </div>
-        <span id="pw2_msg"></span>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* 이름</label>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" id="name" name="name" placeholder="이름">
+        <div class="form-group">
+            <input type="password" class="form-control item" id="password2" name="password2" placeholder="Password 확인" onkeyup="password2_check()">
+            <span id="pw2_msg"></span>
         </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* 생년월일</label>
-        <div class="col-sm-2">
-            <input type="date" class="form-control" id="birth" name="birth">
+        <div class="form-group">
+            <input type="text" class="form-control item" id="name" name="name" placeholder="Username">
         </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* 핸드폰 번호</label>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" id="phone" name="phone" placeholder="'-'를 포함해서 입력해주세요" onkeyup="phone_check(this.value)">
+        <div class="form-group">
+            <input type="date" class="form-control item" id="birth" name="birth">
         </div>
-        <span id="phone_msg"></span>
-    </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="phone" name="phone" placeholder="Phone Number ('-'포함)" onkeyup="phone_check(this.value)">
+            <span id="phone_msg"></span>
+        </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* 이메일 주소</label>
-        <div class="col-sm-2">
-            <input type="email" class="form-control" id="email" name="email">
+        <div class="form-group">
+            <input type="email" class="form-control item" id="email" name="email" placeholder="Email">
+        </div>
+
+        <div class="form-group">
+            <button type="button" class="btn btn-block create-account" onclick="join()">Create Account</button>
+        </div>
+    </form>
+    <div class="social-media">
+        <h5>Sign up with social media</h5>
+        <div class="social-icons">
+            카카오 로그인
+            <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
+            <a href="#"><i class="icon-social-google" title="Google"></i></a>
+            <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
         </div>
     </div>
-
-    <div class="col-sm-offset-2 col-sm-10">
-<!--        <button type="submit" class="btn btn-primary">확인</button>-->
-        <button type="button" class="btn btn-primary" onclick="join()">확인</button>
-        <button type="button" class="btn btn-default" onclick="location.href='/project'">취소</button>
-    </div>
-</form>
+</div>
 
 <span id="id_success"></span>
 <span id="pw_success"></span>
@@ -96,8 +74,16 @@
 <!--유효성 에러표시-->
 <?php echo validation_errors(); ?>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
-
+<script>
+    $(document).ready(function(){
+        $('#birth-date').mask('00/00/0000');
+        $('#phone-number').mask('0000-0000');
+    })
+</script>
 <script>
 //    아이디 중복, 유효성 검사
     function id_check(id){
@@ -116,7 +102,6 @@
             }
         });
     }
-
 //    비밀번호 정규식 확인
     function password_check(password){
         $("#pw_success").val("");
@@ -134,7 +119,6 @@
             }
         });
     }
-
 //    비밀번호 일치확인
     function password2_check(){
         $("#pw2_success").val("");
@@ -155,7 +139,6 @@
             }
         });
     }
-
 //    핸드폰번호 확인
     function phone_check(phone){
         debugger;
@@ -175,7 +158,6 @@
             }
         });
     }
-
 //    등록
     function join(){
         $id_success = $('#id_success').val();
@@ -189,8 +171,5 @@
             alert("회원가입 조건을 만족해야 합니다.");
         }
     }
-
-
-
 </script>
 </html>
