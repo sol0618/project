@@ -16,6 +16,8 @@ class Project extends CI_Controller
 
     public function index(){
         $this->load->view('project');
+        $this->load->view('home');
+        $this->load->view('footer');
     }
 
 //    회원가입 페이지로 이동

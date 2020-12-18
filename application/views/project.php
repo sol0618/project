@@ -1,47 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <title>Project</title>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="/application/views/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/application/views/css/modern-business.css" rel="stylesheet">
 </head>
+
 <body>
-<h1>실습3</h1>
-<h3>github test123</h3>
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/project">Eunsol Project</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/project/board" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        게시판
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
+                        <a class="dropdown-item" href="/project/board">전체</a>
+                        <a class="dropdown-item" href="/project/board">공지</a>
+                        <a class="dropdown-item" href="/project/board">자유게시판</a>
+                    </div>
+                </li>
 
-<h3>2020.12.17</h3>
-<h3>브랜치 테스트</h3>
-<h3>브랜치 테스트 123</h3>
+                <?php if(!isset($_SESSION['login'])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/project/join_form">Join</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/project/login_form">Login</a>
+                    </li>
 
-<h3>sourcetree test</h3>
+                <?php } else { ?>
+                    <li class="nav-link" style="color: white"> <?=$_SESSION['login_id']?>님 환영합니다.</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/project/logout">Logout</a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<br>
+<!-- Bootstrap core JavaScript -->
+<script src="/application/views/vendor/jquery/jquery.min.js"></script>
+<script src="/application/views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<div class="nav pull-right">
-    <?php if(!isset($_SESSION['login'])) { ?>
-        <a href="/project/login_form">로그인</a>
-        <a href="/project/join_form">회원가입</a>
-    <?php } else {
-            echo $_SESSION['login_id'];
-    ?>
-           님 환영합니다.
-           <a href="/project/logout">로그아웃</a>
-    <?php } ?>
-</div>
-<a href="/project">HOME</a>
-<a href="/project/board">게시판</a>
-<hr/>
+
 </body>
 </html>
+
 
