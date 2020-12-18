@@ -71,6 +71,7 @@ class Board_service extends CI_Model
 
 //    게시글 수정
     public function boardUpdate($data){
+
         $this->form_validation->set_rules('category', '카테고리', 'required');
         $this->form_validation->set_rules('title', '제목', 'required');
         $this->form_validation->set_rules('contents', '내용', 'required');

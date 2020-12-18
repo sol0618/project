@@ -16,7 +16,7 @@
     <link href="/application/views/css/member.css" rel="stylesheet">
 </head>
 <body style="background-color: gainsboro">
-<div class="registration-form">
+<div class="registration-form" style="margin-bottom: 2.3%">
     <h2 style="margin-left: 46.5%; margin-bottom: 1%">로그인</h2>
 
     <form class="col-sm-12 form-horizontal" action="/project/login" method="post">
@@ -48,5 +48,9 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script src="assets/js/script.js"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/application/views/vendor/jquery/jquery.min.js"></script>
+<script src="/application/views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

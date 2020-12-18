@@ -27,89 +27,106 @@
 
 </head>
 <body>
-<h1>수정페이지</h1>
-<h5>* 표시는 반드시 입력해야 하는 항목입니다.</h5>
-<br><br><br>
+<div class="container" style="margin-bottom: 3%">
 
-<form class="col-sm-12 form-horizontal" action="/project/boardUpdate" method="post" enctype="multipart/form-data">
+    <h1 class="mt-4 mb-3">게시글 수정
+        <small>board update (* 표시필수)</small>
+    </h1>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">글 번호</label>
-        <div class="col-sm-2">
-            <?=$list->bnum?>
-            <input type="hidden" name="bnum" value="<?=$list->bnum?>">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/project">Home</a>
+        </li>
+        <li class="breadcrumb-item active">게시글 작성</li>
+    </ol>
+
+    <form class="col-sm-12 form-horizontal" action="/project/boardUpdate" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">글 번호</label>
+            <div class="col-sm-8">
+                <?=$list->bnum?>
+                <input type="hidden" name="bnum" value="<?=$list->bnum?>">
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* 카테고리</label>
-        <div class="col-sm-5">
-            <select class="form-control" name="category">
-                <option value="">선택</option>
-                <option value="notice"
-                    <?php if($list->category == 'notice'){ ?> selected <? } ?>
-                    <?php if($_SESSION['login_rank'] == "general") { ?> style="display: none" <? } ?> 공지
-                </option>
-
-                <option value="free" <?php if($list->category == 'free'){ ?> selected <? } ?> >자유게시판</option>
-            </select>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* 카테고리</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="category">
+                    <option value="">선택</option>
+                    <option value="notice"
+                        <?php if($list->category == 'notice'){ ?> selected <? } ?>
+                        <?php if($_SESSION['login_rank'] == "general") { ?> style="display: none" <? } ?> >공지
+                    </option>
+                    <option value="free" <?php if($list->category == 'free'){ ?> selected <? } ?> >자유게시판</option>
+                </select>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">작성자</label>
-        <div class="col-sm-5">
-            <?=$list->id?>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">작성자</label>
+            <div class="col-sm-8">
+                <?=$list->id?>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* 제목</label>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" name="title" value="<?=$list->title?>">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* 제목</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="title" value="<?=$list->title?>">
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* 내용</label>
-        <div class="col-sm-5">
-            <textarea id="summernote" name="contents"><?=$list->contents?></textarea>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">* 내용</label>
+            <div class="col-sm-8">
+                <textarea id="summernote" name="contents"><?=$list->contents?></textarea>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">사진 첨부</label>
-        <div class="col-sm-5">
-            <?php if($list->img == "") { ?>
-                    없음
-            <?php } else { ?>
-                    <img src="/application/controllers/uploads/<?=$list->img?>" width="300"/>
-            <?php } ?>
-            <div>제한 : 500kb까지, jpg png jpeg gif 형식만 가능</div>
-            <input type="file" name="img">
-            <input type="hidden" name="img0" value="<?=$list->img?>">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">사진 첨부</label>
+            <div class="col-sm-8">
+                <?php if($list->img == "") { ?>
+                        없음
+                <?php } else { ?>
+                        <img src="/application/controllers/uploads/<?=$list->img?>" width="300"/>
+                <?php } ?>
+                <div>제한 : 500kb까지, jpg png jpeg gif 형식만 가능</div>
+                <input type="file" name="img">
+                <input type="hidden" name="img0" value="<?=$list->img?>">
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">등록일</label>
-        <div class="col-sm-5">
-            <?=$list->bdate?>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">등록일</label>
+            <div class="col-sm-8">
+                <?=$list->bdate?>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">조회수</label>
-        <div class="col-sm-5">
-            <?=$list->count?>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">조회수</label>
+            <div class="col-sm-8">
+                <?=$list->count?>
+            </div>
         </div>
-    </div>
 
-    <div class="col-sm-offset-4" style="margin-bottom: 3%">
-        <button type="submit" class="btn btn-primary">확인</button>
-        <button type="button" class="btn btn-default" onclick="location.href='/project/board'">취소</button>
+        <div class="col-sm-offset-5" style="margin-bottom: 3%">
+            <button type="submit" class="btn btn-primary">확인</button>
+            <button type="button" class="btn btn-default" onclick="location.href='/project/board'">취소</button>
+        </div>
+    </form>
+</div>
+<!-- Footer -->
+<footer class="py-3 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
     </div>
-</form>
+    <!-- /.container -->
+</footer>
+
 <script>
     $(document).ready(function() {
         $('#summernote').summernote({
@@ -117,5 +134,8 @@
         });
     });
 </script>
+<!-- Bootstrap core JavaScript -->
+<!--<script src="/application/views/vendor/jquery/jquery.min.js"></script>-->
+<script src="/application/views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -110,6 +110,7 @@ class Project extends CI_Controller
 
         $this->load->view('project');
         $this->load->view('boardWrite', $param);
+//        $this->load->view('footer');
     }
 
 //    게시글 상세보기
@@ -171,6 +172,7 @@ class Project extends CI_Controller
 
         $this->load->view('project');
         $this->load->view('boardUpdate', $param);
+//        $this->load->view('footer');
     }
 
 //    게시글 수정
@@ -180,7 +182,6 @@ class Project extends CI_Controller
         } else {
             $img = $_FILES["img"]["name"];
         }
-
         $data = array(
             'bnum' => $_POST['bnum'],
             'category' => $_POST['category'],

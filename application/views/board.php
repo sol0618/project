@@ -9,9 +9,9 @@
     <title>Project</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/application/views/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="/application/views/css/modern-business.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
