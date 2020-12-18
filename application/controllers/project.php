@@ -40,10 +40,9 @@ class Project extends CI_Controller
         );
         $result = $this->member_service->join($data);
         if($result){
-            $this->load->view('project');
+            redirect("/project");
         } else {
-            $this->load->view('project');
-            $this->load->view('join');
+            redirect("/project/join_form");
         }
     }
 
@@ -51,6 +50,7 @@ class Project extends CI_Controller
     public function login_form(){
         $this->load->view('project');
         $this->load->view('login');
+        $this->load->view('footer');
     }
 
 //    로그인
@@ -99,6 +99,7 @@ class Project extends CI_Controller
 
         $this->load->view('project');
         $this->load->view('board', $param);
+        $this->load->view('footer');
     }
 
 //    게시글 작성페이지로 이동

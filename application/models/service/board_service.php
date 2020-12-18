@@ -128,7 +128,7 @@ class Board_service extends CI_Model
             $listcount = $this->board_model->ListCount_category_select($category, $select, $keyword);
         }
 
-        $page_limit = 4; // 한화면에 보일 게시글 수
+        $page_limit = 5; // 한화면에 보일 게시글 수
         $block_limit = 3; // 한화면에 보일 페이지 수
 
         $startRow = ($page - 1) * $page_limit; //0 4 가져올 게시글 시작row

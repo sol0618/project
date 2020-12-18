@@ -13,11 +13,11 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
-    <link href="/application/views/css/join.css" rel="stylesheet">
+    <link href="/application/views/css/member.css" rel="stylesheet">
 </head>
 <body style="background-color: gainsboro">
 <div class="registration-form">
-    <h2 style="margin-left: 46.5%; margin-bottom: 1%" >회원가입</h2>
+    <h2 style="margin-left: 46.5%; margin-bottom: 1%">회원가입</h2>
 
     <form class="col-sm-12 form-horizontal" action="/project/join" name="join_form" method="post">
         <div class="form-icon">
@@ -42,7 +42,7 @@
             <input type="date" class="form-control item" id="birth" name="birth">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="phone" name="phone" placeholder="Phone Number ('-'포함)" onkeyup="phone_check(this.value)">
+            <input type="text" class="form-control item" id="phone" name="phone" placeholder="Phone Number" onkeyup="phone_check(this.value)">
             <span id="phone_msg"></span>
         </div>
 
@@ -78,12 +78,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <script src="assets/js/script.js"></script>
 </body>
-<script>
-    $(document).ready(function(){
-        $('#birth-date').mask('00/00/0000');
-        $('#phone-number').mask('0000-0000');
-    })
-</script>
 <script>
 //    아이디 중복, 유효성 검사
     function id_check(id){

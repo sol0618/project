@@ -7,44 +7,46 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-    <script
-        src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <link href="/application/views/css/member.css" rel="stylesheet">
 </head>
-<body>
-<h1>로그인 페이지</h1>
+<body style="background-color: gainsboro">
+<div class="registration-form">
+    <h2 style="margin-left: 46.5%; margin-bottom: 1%">로그인</h2>
 
-<form class="col-sm-12 form-horizontal" action="/project/login" method="post">
+    <form class="col-sm-12 form-horizontal" action="/project/login" method="post">
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="id" name="id" placeholder="ID">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control item" id="password" name="password" placeholder="Password">
+        </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* ID</label>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" id="id" name="id" placeholder="Id">
+        <div class="form-group">
+            <button type="submit" class="btn btn-block create-account">Login</button>
+        </div>
+    </form>
+
+    <div class="social-media">
+        <h5>Sign up with social media</h5>
+        <div class="social-icons">
+            카카오 로그인
+            <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
+            <a href="#"><i class="icon-social-google" title="Google"></i></a>
+            <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
         </div>
     </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">* Password</label>
-        <div class="col-sm-2">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-        </div>
-    </div>
-
-    <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">확인</button>
-        <button type="button" class="btn btn-default" onclick="location.href='/project'">취소</button>
-    </div>
-</form>
-
-
+</div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

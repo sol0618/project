@@ -104,7 +104,6 @@ class Member_service extends CI_Model{
             $data['password'] = $hash;
 
             $this->member_model->join($data);
-            echo "성공";
             return true;
         }
     }

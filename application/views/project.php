@@ -31,8 +31,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
                         <a class="dropdown-item" href="/project/board">전체</a>
-                        <a class="dropdown-item" href="/project/board">공지</a>
-                        <a class="dropdown-item" href="/project/board">자유게시판</a>
+                        <a class="dropdown-item" href="/project/board?category=notice">공지</a>
+                        <a class="dropdown-item" href="/project/board?category=free">자유게시판</a>
                     </div>
                 </li>
 
@@ -58,7 +58,6 @@
 <!-- Bootstrap core JavaScript -->
 <script src="/application/views/vendor/jquery/jquery.min.js"></script>
 <script src="/application/views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 
 </body>
 </html>
