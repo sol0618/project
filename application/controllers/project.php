@@ -24,6 +24,7 @@ class Project extends CI_Controller
     public function join_form(){
         $this->load->view('project');
         $this->load->view('join');
+        $this->load->view('footer');
     }
 
 //    회원가입 폼 가입
