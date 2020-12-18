@@ -1,165 +1,127 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <title>Project</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
 </head>
 <body>
-<h1>상세페이지</h1>
+<div class="container">
+    
+    <h1 class="mt-4 mb-3"><?=$list->title?><small> by <?=$list->id?></small></h1>
 
-<div class="col-sm-12 form-horizontal">
-    <div class="form-group">
-        <label class="col-sm-2 control-label">글 번호</label>
-        <div class="col-sm-5">
-            <?=$list->bnum?>
-        </div>
-    </div>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/project">Home</a>
+        </li>
+        <li class="breadcrumb-item active"><?=$list->category?></li>
+    </ol>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label">카테고리</label>
-        <div class="col-sm-5">
-            <?=$list->category?>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">작성자</label>
-        <div class="col-sm-5">
-            <?=$list->id?>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">제목</label>
-        <div class="col-sm-5">
-            <?=$list->title?>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">내용</label>
-        <div class="col-sm-5">
-            <?=$list->contents?>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">사진 첨부</label>
-        <div class="col-sm-5">
-            <?php if($list->img == "") { ?>
-                없음
-            <?php } else { ?>
-                <img src="/application/controllers/uploads/<?=$list->img?>" width="300"/>
-            <?php } ?>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">등록일</label>
-        <div class="col-sm-5">
-            <?=$list->bdate?>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">조회수</label>
-        <div class="col-sm-5">
-            <?=$list->count?>
-        </div>
-    </div>
-</div>
-
-<div class="col-sm-offset-4">
-    <?php if($_SESSION['login_rank'] == "admin" || $_SESSION['login_id'] == $list->id){ ?>
-        <button class="btn btn-primary" onclick="location.href='/project/boardUpdate_form?bnum=<?=$list->bnum?>'">수정</button>
-        <button class="btn btn-danger" onclick="location.href='/project/boardDelete?bnum=<?=$list->bnum?>'">삭제</button>
-    <?php } ?>
-    <button class="btn btn-default" onclick="location.href='/project/board'">목록으로</button>
-</div>
-
-<br><br><br>
-
-<div class="col-sm-12 form-horizontal" style="margin: 0% 0% 3% 0%">
-    <div class="form-group">
-        <form action="/project/cInsert" method="post">
-            <label class="col-sm-2 control-label">댓글 작성</label>
+    <div class="row">
+        <div class="col-lg-12">
+            <p style="text-align: right">Posted on <?=$list->bdate?> / 조회수 <?=$list->count?></p>
+            <hr>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="contents" name="contents">
-            </div>
-            <div class="col-sm-2">
-    <!--            <button class="btn btn-success" onclick="c_insert()">등록</button>-->
-                <input type="submit" class="btn btn-success" value="등록">
-            </div>
-        </form>
-    </div>
-
-    <!-- 댓글 출력 -->
-    <div class="col-sm-12 form-horizontal" id="commentArea">
-        <?php for($i=0; $i<sizeof($cList); $i++){ ?>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label"> <?=$cList[$i]["id"]?> </label>
-                <div class="col-sm-5">
-                    <?=$cList[$i]["contents"]?>
-                    <br>
-                    <?=$cList[$i]["cdate"]?>
-                </div>
-                <?php if($_SESSION['login_rank'] == "admin" || $_SESSION['login_id'] == $cList[$i]["id"]){ ?>
-<!--                    <button onclick="c_delete(this)" data-cnum=--><?//=$cList[$i]["cnum"]?><!--삭제</button>-->
-                    <button onclick="location.href='/project/cDelete?bnum=<?=$cList[$i]["bnum"]?>&cnum=<?=$cList[$i]["cnum"]?>'">삭제</button>
+                <?php if($list->img == "") { ?>
+                <?php } else { ?>
+                    <img class="img-fluid rounded" src="/application/controllers/uploads/<?=$list->img?>" width="300"/>
                 <?php } ?>
+            </div>
+            <p><?=$list->contents?></p>
 
-                <button data-toggle="collapse" data-target="#collapse1<?=$cList[$i]["cnum"]?>" aria-expanded="false" aria-controls="collapse1">댓글 입력</button>
-                <button data-toggle="collapse" data-target="#collapse2<?=$cList[$i]["cnum"]?>" aria-expanded="true" aria-controls="collapse2">댓글 닫기</button>
+            <div style="margin-left: 40%">
+                <?php if($_SESSION['login_rank'] == "admin" || $_SESSION['login_id'] == $list->id){ ?>
+                    <button class="btn btn-primary" onclick="location.href='/project/boardUpdate_form?bnum=<?=$list->bnum?>'">수정</button>
+                    <button class="btn btn-danger" onclick="location.href='/project/boardDelete?bnum=<?=$list->bnum?>'">삭제</button>
+                <?php } ?>
+                <button class="btn btn-secondary" onclick="location.href='/project/board'">목록으로</button>
             </div>
 
-            <!-- re댓글 입력 -->
-            <div class="form-group collapse" id="collapse1<?=$cList[$i]["cnum"]?>">
-                <form action="/project/reInsert" method="post">
-                    <input type="hidden" name="cnum" value="<?=$cList[$i]["cnum"]?>">
-                    <input type="hidden" name="bnum" value="<?=$cList[$i]["bnum"]?>">
-                    <div class="col-sm-offset-2 col-sm-5">
-                        <input type="text" class="form-control" id="re_contents<?=$cList[$i]["cnum"]?>" name="contents" placeholder="re댓글 입력">
-                    </div>
-    <!--                <button onclick="re_insert(this)" data-cnum="--><?//=$cList[$i]["cnum"]?><!--" data-contents="#re_contents--><?//=$cList[$i]["cnum"]?><!--" >등록</button>-->
-                    <input type="submit" value="등록">
-                </form>
-            </div>
-
-            <!-- re댓글 보기 -->
-            <div class="form-group collapse in" style="margin-left: 5%" id="collapse2<?=$cList[$i]["cnum"]?>">
-                <?php for($j=0; $j<sizeof($reList); $j++){
-                    if($cList[$i]["cnum"] == $reList[$j]["cnum"]){?>
+            <!-- Comments Form -->
+            <div class="card my-4">
+                <h5 class="card-header">Leave a Comment</h5>
+                <div class="card-body">
+                    <form action="/project/cInsert" method="post">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"> <?=$reList[$j]["id"]?> </label>
-                            <div class="col-sm-5">
-                                <?=$reList[$j]["contents"]?><br>
-                                <?=$reList[$j]["redate"]?>
-                            </div>
-                            <?php if($_SESSION['login_rank'] == "admin" || $_SESSION['login_id'] == $reList[$j]["id"]){ ?>
-<!--                                <button onclick="re_delete(this)" data-renum=--><?//=$reList[$j]["renum"]?><!-- data-cnum=--><?//=$reList[$j]["cdate"]?><!-- style="{%display%}">삭제</button>-->
-                                <button onclick="location.href='/project/redelete?bnum=<?=$reList[$j]["bnum"]?>&renum=<?=$reList[$j]["renum"]?>'">삭제</button>
-                            <?php } ?>
+                            <input type="hidden" name="bnum" value="<?=$list->bnum?>">
+                            <textarea class="form-control" rows="3" id="contents" name="contents"></textarea>
                         </div>
-                    <?php }
-                } ?>
+                        <!--            <button class="btn btn-success" onclick="c_insert()">등록</button>-->
+                        <button type="submit" class="btn btn-success">댓글 등록</button>
+                    </form>
+                </div>
             </div>
-        <?php } ?>
+
+            <!-- Single Comment -->
+            <div id="commentArea" style="margin-top:3%; margin-bottom:3%">
+                <!-- 댓글 -->
+                <?php for($i=0; $i<sizeof($cList); $i++){ ?>
+                    <div class="media mb-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0"><?=$cList[$i]["id"]?></h5>
+                            <?=$cList[$i]["contents"]?>
+                            <br>
+                            <?=$cList[$i]["cdate"]?>
+                        </div>
+                        <?php if($_SESSION['login_rank'] == "admin" || $_SESSION['login_id'] == $cList[$i]["id"]){ ?>
+                            <!--                    <button onclick="c_delete(this)" data-cnum=--><?//=$cList[$i]["cnum"]?><!--삭제</button>-->
+                            <button class="btn btn-secondary" onclick="location.href='/project/cDelete?bnum=<?=$cList[$i]["bnum"]?>&cnum=<?=$cList[$i]["cnum"]?>'">삭제</button>
+                        <?php } ?>
+
+                        <button class="collapsed btn btn-secondary" data-toggle="collapse" href="#collapse1<?=$cList[$i]["cnum"]?>" aria-expanded="false" aria-controls="collapse1<?=$cList[$i]["cnum"]?>">댓글 입력</button>
+                        <button class="btn btn-secondary" data-toggle="collapse" href="#collapse2<?=$cList[$i]["cnum"]?>" aria-expanded="true" aria-controls="collapse2<?=$cList[$i]["cnum"]?>">댓글 닫기</button>
+                    </div>
+
+                    <!-- re댓글 입력 -->
+                    <div class="collapse" id="collapse1<?=$cList[$i]["cnum"]?>">
+                        <form action="/project/reInsert" method="post">
+                            <input type="hidden" name="cnum" value="<?=$cList[$i]["cnum"]?>">
+                            <input type="hidden" name="bnum" value="<?=$cList[$i]["bnum"]?>">
+                            <div class="col-sm-offset-2 col-sm-5">
+                                <input type="text" class="form-control" id="re_contents<?=$cList[$i]["cnum"]?>" name="contents" placeholder="re댓글 입력">
+                            </div>
+                            <!--                <button onclick="re_insert(this)" data-cnum="--><?//=$cList[$i]["cnum"]?><!--" data-contents="#re_contents--><?//=$cList[$i]["cnum"]?><!--" >등록</button>-->
+                            <input type="submit" value="등록">
+                        </form>
+                    </div>
+
+                    <!-- re댓글 -->
+                    <div class="collapse show" style="margin-left: 5%" id="collapse2<?=$cList[$i]["cnum"]?>">
+                        <?php for($j=0; $j<sizeof($reList); $j++){
+                            if($cList[$i]["cnum"] == $reList[$j]["cnum"]){?>
+                                <div class="media mt-4">
+                                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                                    <div class="media-body">
+                                        <h5 class="mt-0"><?=$reList[$j]["id"]?></h5>
+                                        <?=$reList[$j]["contents"]?>
+                                        <br>
+                                        <?=$reList[$j]["redate"]?>
+                                    </div>
+                                    <?php if($_SESSION['login_rank'] == "admin" || $_SESSION['login_id'] == $reList[$j]["id"]){ ?>
+                                        <button onclick="location.href='/project/redelete?bnum=<?=$reList[$j]["bnum"]?>&renum=<?=$reList[$j]["renum"]?>'">삭제</button>
+                                    <?php } ?>
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
+            </div>
+            <!-- 댓글들 끝-->
+        </div>
     </div>
 </div>
+
 
 <script type="text/html" id="comment">
     <div class="form-group">
@@ -402,9 +364,9 @@
         });
     }
 
-
-
 </script>
-
+<!-- Bootstrap core JavaScript -->
+<script src="/application/views/vendor/jquery/jquery.min.js"></script>
+<script src="/application/views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -119,8 +119,7 @@ class Board_model extends CI_Model
     }
 
 //    댓글 작성
-    public function c_insert($data)
-    {
+    public function c_insert($data){
         $this->db->set('cdate', 'NOW()', false);
         return $this->db->insert('comment', $data);
     }

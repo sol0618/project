@@ -132,6 +132,7 @@ class Project extends CI_Controller
 
         $this->load->view('project');
         $this->load->view('boardView', $param);
+        $this->load->view('footer');
     }
 
 //    게시글 작성

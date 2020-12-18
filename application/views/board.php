@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Project</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +22,7 @@
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="index.html">Home</a>
+            <a href="/project">Home</a>
         </li>
         <li class="breadcrumb-item active">게시판</li>
     </ol>
@@ -45,7 +44,7 @@
 
                 <!-- 일반회원 권한 자유게시판 글쓰기 허용 -->
                 <?php if($_SESSION['login_rank'] == "general" && $category == "free"){ ?>
-                    <button class="btn btn-primary" id="boardWrite" onclick="location.href='/project/boardWrite_form?category=free'">글쓰기</button>
+                    <button class="btn btn-secondary btn-block" id="boardWrite" onclick="location.href='/project/boardWrite_form?category=free'">글쓰기</button>
                 <?php } ?>
             </div>
         </div>
