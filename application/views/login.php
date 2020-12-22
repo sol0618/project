@@ -16,7 +16,7 @@
     <link href="/application/views/css/member.css" rel="stylesheet">
 </head>
 <body style="background-color: gainsboro">
-<div class="registration-form" style="margin-bottom: 2.3%">
+<div class="registration-form" style="margin-bottom: 3.3%">
     <h2 style="margin-left: 46.5%; margin-bottom: 1%">로그인</h2>
 
     <form class="col-sm-12 form-horizontal" action="/project/login" method="post">
@@ -39,9 +39,6 @@
         <h5>Sign up with social media</h5>
         <div class="social-icons">
             카카오 로그인
-            <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
-            <a href="#"><i class="icon-social-google" title="Google"></i></a>
-            <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
         </div>
     </div>
 </div>

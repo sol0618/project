@@ -58,9 +58,6 @@
         <h5>Sign up with social media</h5>
         <div class="social-icons">
             카카오 로그인
-            <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
-            <a href="#"><i class="icon-social-google" title="Google"></i></a>
-            <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
         </div>
     </div>
 </div>

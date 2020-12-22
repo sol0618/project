@@ -80,19 +80,19 @@
                         <?php } ?>
 
                         <button class="collapsed btn btn-secondary" data-toggle="collapse" href="#collapse1<?=$cList[$i]["cnum"]?>" aria-expanded="false" aria-controls="collapse1<?=$cList[$i]["cnum"]?>">댓글 입력</button>
-                        <button class="btn btn-secondary" data-toggle="collapse" href="#collapse2<?=$cList[$i]["cnum"]?>" aria-expanded="true" aria-controls="collapse2<?=$cList[$i]["cnum"]?>">댓글 닫기</button>
+<!--                        <button class="btn btn-secondary" data-toggle="collapse" href="#collapse2--><?//=$cList[$i]["cnum"]?><!--" aria-expanded="true" aria-controls="collapse2--><?//=$cList[$i]["cnum"]?><!--">댓글 닫기</button>-->
                     </div>
 
                     <!-- re댓글 입력 -->
-                    <div class="collapse" id="collapse1<?=$cList[$i]["cnum"]?>">
+                    <div class="collapse" style="margin-left: 5%" id="collapse1<?=$cList[$i]["cnum"]?>">
                         <form action="/project/reInsert" method="post">
                             <input type="hidden" name="cnum" value="<?=$cList[$i]["cnum"]?>">
                             <input type="hidden" name="bnum" value="<?=$cList[$i]["bnum"]?>">
-                            <div class="col-sm-offset-2 col-sm-5">
+                            <div class="input-group col-sm-offset-2 ">
                                 <input type="text" class="form-control" id="re_contents<?=$cList[$i]["cnum"]?>" name="contents" placeholder="re댓글 입력">
+                                <span class="input-group-append"><input type="submit" class="btn btn-secondary" value="등록"></span>
                             </div>
                             <!--                <button onclick="re_insert(this)" data-cnum="--><?//=$cList[$i]["cnum"]?><!--" data-contents="#re_contents--><?//=$cList[$i]["cnum"]?><!--" >등록</button>-->
-                            <input type="submit" value="등록">
                         </form>
                     </div>
 
@@ -109,7 +109,7 @@
                                         <?=$reList[$j]["redate"]?>
                                     </div>
                                     <?php if($_SESSION['login_rank'] == "admin" || $_SESSION['login_id'] == $reList[$j]["id"]){ ?>
-                                        <button onclick="location.href='/project/redelete?bnum=<?=$reList[$j]["bnum"]?>&renum=<?=$reList[$j]["renum"]?>'">삭제</button>
+                                        <button class="btn btn-secondary" onclick="location.href='/project/redelete?bnum=<?=$reList[$j]["bnum"]?>&renum=<?=$reList[$j]["renum"]?>'">삭제</button>
                                     <?php } ?>
                                 </div>
                             <?php } ?>

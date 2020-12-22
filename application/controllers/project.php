@@ -177,17 +177,12 @@ class Project extends CI_Controller
 
 //    게시글 수정
     public function boardUpdate(){
-        if($_FILES["img"]["name"] == ""){
-            $img = $_POST['img0'];
-        } else {
-            $img = $_FILES["img"]["name"];
-        }
         $data = array(
             'bnum' => $_POST['bnum'],
             'category' => $_POST['category'],
             'title' => $_POST['title'],
             'contents' => $_POST['contents'],
-            'img' => $img
+            'img' => $_FILES["img"]["name"]
         );
         $result = $this->board_service->boardUpdate($data);
         $bnum = $data['bnum'];

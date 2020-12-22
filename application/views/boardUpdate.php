@@ -95,7 +95,7 @@
                 <?php } ?>
                 <div>제한 : 500kb까지, jpg png jpeg gif 형식만 가능</div>
                 <input type="file" name="img">
-                <input type="hidden" name="img0" value="<?=$list->img?>">
+<!--                <input type="hidden" name="img0" value="--><?//=$list->img?><!--">-->
             </div>
         </div>
 

@@ -80,6 +80,7 @@ class Board_service extends CI_Model
             return false;
         } else {
             if($data['img']== ""){
+                $data = array_filter($data);
                 return $this->board_model->boardUpdate($data);
             }
 
