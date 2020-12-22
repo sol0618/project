@@ -31,6 +31,7 @@ class Project extends CI_Controller
     public function join(){
         $data = array(
             'id' => $_POST['id'],
+            'kid' => $_POST['kid'],
             'password' => $_POST['password'],
             'name' => $_POST['name'],
             'birth' => $_POST['birth'],
@@ -65,8 +66,99 @@ class Project extends CI_Controller
         }
     }
 
+//    카카오 로그인
+    public function kakaoLogin(){
+        //사용자 토큰 받기
+        $code = $_GET["code"];
+        $app_key = "26965564b7dccc230e5c0ce1979a7f51";
+        $redirect_uri = "http://dmsthf590.com/project/kakaoLogin";
+        $api_url = "https://kauth.kakao.com/oauth/token";
+        $params = sprintf( 'grant_type=authorization_code&client_id=%s&redirect_uri=%s&code=%s', $app_key, $redirect_uri, $code);
+
+        $opts = array(
+            CURLOPT_URL => $api_url,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSLVERSION => 1,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $params,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER => false
+        );
+
+        $curlSession = curl_init();
+        curl_setopt_array($curlSession, $opts);
+        $accessTokenJson = curl_exec($curlSession);
+        curl_close($curlSession);
+
+        $responseArr = json_decode($accessTokenJson, true);
+        $_SESSION['kakao_access_token'] = $responseArr['access_token'];
+        $_SESSION['kakao_refresh_token'] = $responseArr['refresh_token'];
+        $_SESSION['kakao_refresh_token_expires_in'] = $responseArr['refresh_token_expires_in'];
+
+        //사용자 정보 가저오기
+        $USER_API_URL= "https://kapi.kakao.com/v2/user/me";
+        $opts = array(
+            CURLOPT_URL => $USER_API_URL,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSLVERSION => 1,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => false,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: Bearer " . $responseArr['access_token']
+            )
+        );
+
+        $curlSession = curl_init();
+        curl_setopt_array($curlSession, $opts);
+        $accessUserJson = curl_exec($curlSession);
+        curl_close($curlSession);
+
+        $me_responseArr = json_decode($accessUserJson, true);
+
+        if ($me_responseArr['id']) {
+            $kid = 'kakao_' . $me_responseArr['id'];
+            $token = $responseArr['access_token'];
+
+            $result = $this->member_service->kidCheck($kid, $token);
+
+            if ($result) {
+//                $this->index();
+                redirect("/project");
+            } else {
+                // 회원정보가 없다면 회원가입
+                $param['kid'] = $kid;
+                $this->load->view('project');
+                $this->load->view('join', $param);
+                $this->load->view('footer');
+            }
+        }
+    }
+
 //    로그아웃
     public function logout(){
+
+        $access_token = $_SESSION['token'];
+        $UNLINK_API_URL = "https://kapi.kakao.com/v1/user/unlink";
+        $opts = array(
+            CURLOPT_URL => $UNLINK_API_URL,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSLVERSION => 1,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => false,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: Bearer " . $access_token
+            )
+        );
+
+        $curlSession = curl_init();
+        curl_setopt_array($curlSession, $opts);
+        $accessUnlinkJson = curl_exec($curlSession);
+        curl_close($curlSession);
+        $unlink_responseArr = json_decode($accessUnlinkJson, true);
+
+
         session_destroy();
         redirect('/project');
     }

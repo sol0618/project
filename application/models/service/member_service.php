@@ -102,7 +102,7 @@ class Member_service extends CI_Model{
 //            비밀번호 암호화
             $hash = password_hash($data['password'], PASSWORD_BCRYPT);
             $data['password'] = $hash;
-
+            $data = array_filter($data);
             $this->member_model->join($data);
             return true;
         }
@@ -121,6 +121,21 @@ class Member_service extends CI_Model{
         } else {
             return false;
         }
+    }
+
+//    카카오아이디 확인
+    public function kidCheck($kid, $token){
+        $result = $this->member_model->kidCheck($kid);
+        //로그인 성공
+        if($result != false){
+            $_SESSION['login'] = true;
+            $_SESSION['login_id'] = $result->id;
+            $_SESSION['login_rank'] = $result->rank;
+
+            $_SESSION['token'] = $token;
+            $result = true;
+        }
+        return $result;
     }
 
 }

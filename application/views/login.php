@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,8 +17,8 @@
     <link href="/application/views/css/member.css" rel="stylesheet">
 </head>
 <body style="background-color: gainsboro">
-<div class="registration-form" style="margin-bottom: 3.3%">
-    <h2 style="margin-left: 46.5%; margin-bottom: 1%">로그인</h2>
+<div class="registration-form" style="margin-bottom: 4.2%">
+    <h2 style="margin-left: 48%; margin-bottom: 1%">로그인</h2>
 
     <form class="col-sm-12 form-horizontal" action="/project/login" method="post">
         <div class="form-icon">
@@ -37,11 +38,12 @@
 
     <div class="social-media">
         <h5>Sign up with social media</h5>
-        <div class="social-icons">
-            카카오 로그인
-        </div>
+        <a href="https://kauth.kakao.com/oauth/authorize?client_id=26965564b7dccc230e5c0ce1979a7f51&redirect_uri=http://dmsthf590.com/project/kakaoLogin&response_type=code">
+            <img src="/application/views/img/kakao_login.png" alt="카카오 로그인">
+        </a>
     </div>
 </div>
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script src="assets/js/script.js"></script>

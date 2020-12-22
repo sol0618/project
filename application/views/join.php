@@ -17,9 +17,13 @@
 </head>
 <body style="background-color: gainsboro">
 <div class="registration-form">
-    <h2 style="margin-left: 46.5%; margin-bottom: 1%">회원가입</h2>
+    <h2 style="margin-left: 47%; margin-bottom: 1%">회원가입</h2>
 
     <form class="col-sm-12 form-horizontal" action="/project/join" name="join_form" method="post">
+        <?php if(!empty($kid)){ ?>
+            <input type="hidden" id="kid" name="kid" value="<?=$kid?>">
+        <?php } ?>
+
         <div class="form-icon">
             <span><i class="icon icon-user"></i></span>
         </div>
@@ -55,10 +59,7 @@
         </div>
     </form>
     <div class="social-media">
-        <h5>Sign up with social media</h5>
-        <div class="social-icons">
-            카카오 로그인
-        </div>
+        모든 정보 필수입력
     </div>
 </div>
 

@@ -24,4 +24,14 @@ class Member_model extends CI_Model{
         return $this->db->get_where('member', array('id'=>$id))->row();
     }
 
+//    카카오아이디 확인
+    public function kidCheck($kid){
+        $kid = $this->db->get_where('member', array('kid'=>$kid));
+        if($kid->num_rows()>0){
+            return $kid->row();
+        } else {
+            return $result = false;
+        }
+    }
+
 }
