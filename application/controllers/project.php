@@ -137,7 +137,7 @@ class Project extends CI_Controller
 
 //    로그아웃
     public function logout(){
-
+        //카카오계정 로그아웃
         $access_token = $_SESSION['token'];
         $UNLINK_API_URL = "https://kapi.kakao.com/v1/user/unlink";
         $opts = array(
@@ -158,7 +158,7 @@ class Project extends CI_Controller
         curl_close($curlSession);
         $unlink_responseArr = json_decode($accessUnlinkJson, true);
 
-
+        //페이지 세션
         session_destroy();
         redirect('/project');
     }

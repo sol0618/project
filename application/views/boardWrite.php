@@ -7,10 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
     <!-- include libraries(jQuery, bootstrap) -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -60,7 +58,6 @@
             <div class="col-sm-8">
                 <input type="text" class="form-control" name="title">
             </div>
-            <span id="pw_msg2"></span>
         </div>
 
         <div class="form-group">
@@ -73,8 +70,8 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">사진 첨부</label>
             <div class="col-sm-8">
-                <span>제한 : 500kb까지, jpg png jpeg gif 형식만 가능</span>
                 <input type="file" name="img">
+                <span>제한 : 500kb까지, jpg png jpeg gif 형식만 가능</span>
             </div>
         </div>
 
